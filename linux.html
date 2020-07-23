@@ -59,8 +59,168 @@
 					<div id="main">
 						<div class="inner">
 							<h1>Linux</h1>
-							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
-						<p> Under Construction</p>
+							<span class="image main"><img src="images/flutter.jpg" alt="" /></span>
+						<p> 
+						</p><b>Here are two examples that showcase my knowledge of linux terminal commands (All commands are in bold)</b> <br></p>
+							
+						</p> <b>FLUTTER ENVIROMENT SETUP For Ubuntu 18.04</b> <br></p>
+
+						</p><b><u>Step 1: Install cURL & JDK <br></b> </u></p>
+						 Give current user write permission <br>
+						 <b> sudo chown -R $USER:$USER /opt <br></b>
+						 
+						 Install cURL (client URL) command line tool for file transfer with a URL syntax. <br>
+						 It supports several protocols including HTTP, HTTPS, FTP, and many more. <br>
+						 <b> sudo apt-get install curl <br></b>
+						 
+						 First well need the Java Development Kit(JDK) <br>
+						 JDK can be installed on our Ubuntu system with the below commands. <br>
+						 <b> sudo add-apt-repository ppa:openjdk-r/ppa  <br></b>
+						 <b>sudo apt-get update <br></b>
+						<b> sudo apt-get install openjdk-8-jdk  <br></b>
+						 
+						</p> <b> <u>Step 2: Install and Set Up Android Studio </b> </u><br></p>
+						 
+						 Android studio needs to be installed for working with Flutter development.<br> 
+						 Below is the official android Studio zip file link. <br>
+						 https://developer.android.com/studio/index.html <br>
+						 Unzip the file to /opt directory by running the command. <br>
+						<b> sudo unzip android-studio-ide-*version* -d /opt <br></b>
+						 
+						 Configure ANDROID_HOME Environment variable <br>
+						 Environment variables are global system variables accessible by all the processes running under our Operating System. <br>
+						 So open .bash_profile file using nano or vim editor. <br>
+						 Extract the file to /opt <br>
+						 copy and paste the below code in it. <br>
+						 export ANDROID_HOME=$HOME/Android/sdk   <br>
+						 export PATH=$PATH:$ANDROID_HOME/tools   <br>
+						 export PATH=$PATH:$ANDROID_HOME/platform-tools <br>
+						 
+						 Install Flutter Plugin on Android Studio <br>
+						 Go to, Configure -> Plugin <br>
+						 Now, Search of Flutter and Install. It requires a restart for Android Studio to activate this plugin. <br>
+						 
+					</p><b> <u>Step 3. Install and Set Up Flutter SDK </b> </u><br></p>
+						 
+						 To start creating Flutter projects, Flutter Software Development Kit (SDK) is necessary. This can be installed on our system with the below steps.<br>
+						 https://flutter.dev/docs/get-started/install/linux <br>
+						 Install & Download the tar.xz file and Extract the File to /opt <br>
+						<b> tar -xf file.name.tar -C /path/to/directory <br></b>
+						 
+						 Now we need to add the Flutter to our system’s path using the below command. <br>
+						<b> export PATH=`pwd`/flutter/bin:$PATH <br></b>
+						<b> source $HOME/.bash_profile <br></b>
+						 
+					</p> <b> <u>Step 4. Accept the Licenses </b> </u><br></p>
+						 
+						 we need to accept some licenses to start development with Flutter. Just run the below command and accept all the licenses by pressing y. <br>
+						<b> flutter doctor --android-licenses <br></b>
+						 
+						 
+						 
+					</p><b> <u>Step 5. Update the Path Permanently</b> </u> <br></p>
+						 
+						 Edit .bashrc and add this path to make the it a permanent change  <br>
+					<b>	 sudo nano .bashrc <br></b>
+					<b>	 export PATH=/opt/android-studio/bin:/opt/flutter/bin:$PATH <br></b>
+						 
+					</p> <b> <u>Step 6: Choosing the Code Editor </b> </u><br></p>
+						 You can now use either android studio to starting creating flutter apps or you can download visual studio code which is also directly supports the Flutter and Flutter plugin. <br>
+						 Link below  <br>
+						 https://code.visualstudio.com/#alt-downloads <br>
+						 
+						</p> For Android <br></p>
+						 
+						 On our mobile device, <br>
+						 Go to Settings->About <br>
+						 We can see a Build Version menu there. Continuously click the option until it enables the Developer options <br>
+						 Now, return to Settings. We can see the Developer options menu there. Enable it. Also, enable the USB debugging option in it.<br>
+						 Connect our mobile device with our Ubuntu system using the USB port. Type the below command to check whether our mobile device is connected or not. <br>
+						<b> flutter devices <br></b>
+						 If it is connected, from the VS studio terminal, run <br>
+						<b>	 flutter run <br></b>
+						 This will install and open the newly created app on our connected Android device. <br>
+						
+						</p>For Web  <br></p>
+						 
+						 In order to enable for web, run these commands:<br>
+					<b>	 flutter channel beta <br></b>
+					<b>	 flutter upgrade <br></b>
+					<b>	 flutter config --enable-web <br></b>
+						 
+						 
+						</p>Helpful command <br></p>
+						 
+						 This command displays any issues with flutter and the steps to take to remedy the issue. <br>
+						<b> flutter doctor<br></b>
+						 
+
+						</p><b>LXC Commands - Breaking Bridge and SSH </b> <br></p>
+					</p>	LXC an operating-system-level virtualization method for running multiple isolated Linux systems on a control host using a single Linux kernel. <br></p>
+
+					</p><b> <u>	Step 1: Turn off containers <br>	</b> </u>	</p>																																					
+				<b> 	sudo lxc stop "container" <br> </b> 
+
+					</p><b> <u>	Step 2: Remove eth0 device </b> </u><br> </p>
+				<b> 	sudo lxc config device remove "container name" eth0 </b> <br>
+
+					</p><b> <u>	Step 3: Follow this. </b> </u><br> </p>
+							https://discuss.linuxcontainers.org/t/forward-port-80-and-443-from-wan-to-container/2042 <br>
+
+							use the add command listed: <br>											
+						<b> 		lxc config device add "container name" "proxyname ("anyname")" proxy listen=tcp:0.0.0.0:"Any port" connect=tcp:127.0.0.1:22 (22 is the default ssh port)</b>  <br>
+
+					</p><b> <u>	Step 4: Enter Turn on your container and enter is via:</b> </u> <br></p>
+					<b> 	sudo lxc exec "container name" bash <br></b> 
+
+					</p><b> <u>	Step 5: Modify "/etc/ssh/sshd_config"</b> </u> <br></p>
+							Change: PermitRootLogin yes <br>
+							Change: PasswordAuthentication yes <br>
+
+				</p>	<b> <u>	Step 6: Give your root user a password </b> </u><br></p>
+				<b> 	sudo passwd root </b>  <br>
+
+				</p><b> <u>	Step 7: Restart your sshd service</b> </u> <br> </p>
+					<b> 			sudo systemctl restart sshd</b>  <br>
+
+				</p><b> <u>		Step 8: To test ssh in, open powershell on your PC and enter:</b> </u> <br>		</b> 								
+					<b> 	ssh root@10.100.3.43 -p "whatever port you set" </b> <br>
+					<b> 	port forward mediawiki command: </b> <br>
+					<b> 	sudo lxc config device add W0416792-lamp proxy listen=tcp:0.0.0.0:"Any port" connect=tcp:127.0.0.1:80 </b> <br>
+
+						</p> <b> COMMAND: lxc launch ubuntu:18.04  <CONTAINER_NAME> </b>  <br>
+							Basic LXC commands <br>
+							View all running containers <br>
+						<b> COMMAND: lxc list </b>  <br> 
+							Set a Container to use a bridge connection <br>
+						<b> COMMAND: $ lxc config device add containername eth0 nic nictype=bridged parent=br0 name=eth0</b>  <br>
+							Stop a container <br>
+						<b> 	COMMAND: lxc stop <CONTAINER_NAME> </b> <br>
+							Start a container <br>
+						<b> 	COMMAND: lxc start <CONTAINER_NAME></b>  <br>
+							Access the terminal shell on the running container <br>
+						<b> 	COMMAND: lxc exec <CONTAINER_NAME>  /bin/bash </b> <br>
+							Send a command directly to the container from the hosts terminal <br>
+						<b> 	COMMAND: lxc exec <CONTAINER_NAME>  apt-get update </b> <br>
+							Send a file to the container <br>
+						<b> 	COMMAND: lxc file push <FILENAME> <CONTAINER_NAME>/<DIRECTORY>/ </b> <br>
+							Pull a file from the container <br>
+						<b> 	COMMAND: lxc file pull first/etc/hosts .</b>  <br>
+						</p>
+					<b> 	sudo lxc exec W0416792-samba /bin/bash </b> <br>
+						<b> 	sudo lxc config set W0416792-lamp boot.autostart 1 </b> <br>
+				<b> 	sudo lxc config set W0416792-samba boot.autostart 1</b>  <br>
+
+							To allow up arrow previous commands and tabbing <br>
+						<b> bash  </b> <br>
+
+							
+
+
+
+
+
+						</p>
 						</div>
 					</div>
 
